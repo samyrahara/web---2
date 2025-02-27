@@ -1,4 +1,0 @@
-- Nama : Marissa Azzahra 
-- Nim : 0110124033
-- Rombel : SI10 
-- Asdos : ka jay
