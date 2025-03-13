@@ -1,0 +1,36 @@
+Nama: Marissa Azzahra 
+Nim: 0110124033
+Rombel: SI10
+Asdos: Ka jay
+
+1.	Jelaskan apa yang dimaksud dengan dokumen root?
+Jawaban: 
+Dokumen root adalah folder utama tempat file website disimpan dan dijalankan oleh server web (Apache).
+2.	Pada apache web server, apakah dokumen root harus terletak dalam direktori C:\xampp\htdocs ? Jelaskan jawaban anda
+Jawaban:
+Ya, secara default Apache di XAMPP menggunakan C:\xampp\htdocs sebagai document root, tempat menyimpan file website yang bisa diakses melalui  http://localhost/. 
+3.	Jelaskan apa yang dimaksud dengan perintah git : init, clone, remote, add, commit, push dan checkout  
+Jawaban:
+•	Git init 
+-	Digunakan untuk membuat repository Git baru di dalam folder proyek.
+•	Git clone
+-	Digunakan untuk menyalin repository yang sudah ada dari remote ke komputer local.
+•	Git remote 
+-	Digunakan untuk menghubungkan repository local dengan repository remote (Github).
+•	Git add 
+-	Menambahkan file yang telah dibuat atau diubah ke dalam staging area sebelum dikomit.
+•	Git commit 
+-	Menyimpan perubahan dari staging area ke repository local dengan pesan tertentu. 
+•	Git push 
+-	Mengirim perubahan dari repository local ke repository remote.
+•	Git checkout.
+-	Digunakan untuk berpindah branch atau mengembalikan file ke versi sebelumnya.
+4.	Jelaskan perbedaan antara Github dan Gitlab
+Jawaban:
+GitHub lebih popular untuk kolaborasi open-source, sementara GitLab lebih flekdibel karena bisa di-host sendiri (sistem dijalankan di server milik sendiri), GitLab punya fitur CI/CD (Continuous Integration dan Continuous Deployment/Delivery) bawaan, sedangkan GitHub perlu konfigurasi tambahan. Dari segi harga, GitHub gratis untuk proyek public, sedangkan Gitlab bisa di-instal sendiri secara gratis, tapi layanan cloud-nya berbayar.
+5.	Apa bedanya variable user dengan variable system ?
+Jawaban:
+Variable user hanya  berlaku untuk akun pengguna tertentu sedangkan Variable system berlaku untuk semua pengguna dalam sistem.
+6.	Apa persamaan variable system dengan variable constant ?
+Jawaban: 
+Persamaan Variable System dan Variable Constant adalah sama sama menyimpan nilai yang bisa digunakan oleh sistem atau program, keduanya bosa diakses secara global, baik oleh sistem operasi maupun dalam pemrograman, keduanya juga memengaruhi cara kerja sistem atau aplikasi karena nilai yang disimpan digunakan dalam berbagai proses. 
