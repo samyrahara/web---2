@@ -11,7 +11,7 @@ $pesananList = Pesanan::get();
 
 <head>
     <meta charset="UTF-8" />
-    <title>Data Pesanan - project01</title>
+    <title>Data Pesanan - Koperasi Pegawai</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../public/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -19,29 +19,43 @@ $pesananList = Pesanan::get();
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="dashboard.php">project01</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="dashboard.php">Koperasi Pegawai</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
-                        <a class="nav-link" href="list-anggota.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>Anggota
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAnggota" aria-expanded="false" aria-controls="collapseAnggota">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Manajemen Anggota
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link" href="list-pegawai.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>Pegawai
-                        </a>
+                        <div class="collapse" id="collapseAnggota" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="list-anggota.php">Data Anggota</a>
+                                <a class="nav-link" href="list-pegawai.php">Data Pegawai</a>
+                                <a class="nav-link" href="list-kartuDiskon.php">Kartu Diskon</a>
+                            </nav>
+                        </div>
+
                         <a class="nav-link" href="list-produk.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-box"></i></div>Produk
+                            <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                            Produk
                         </a>
                         <a class="nav-link" href="list-pesanan.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>Pesanan
+                            <div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
+                            Pesanan
                         </a>
                         <a class="nav-link" href="list-pembayaran.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>Pembayaran
+                            <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                            Pembayaran
                         </a>
                     </div>
                 </div>
@@ -51,6 +65,7 @@ $pesananList = Pesanan::get();
                 </div>
             </nav>
         </div>
+
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
@@ -76,21 +91,22 @@ $pesananList = Pesanan::get();
                                         <th>Tanggal</th>
                                         <th>Diskon</th>
                                         <th>Status Bayar</th>
-                                        <th>Anggota ID</th>
+                                        <th>Anggota</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($pesananList as $index => $pesanan): ?>
                                         <tr>
-                                            <td><?= $pesanan['id'] ?></td>
-                                            <td><?= $pesanan['tanggal'] ?></td>
-                                            <td><?= $pesanan['diskon'] ?>%</td>
-                                            <td><?= $pesanan['status_bayar'] ?></td>
-                                            <td><?= $pesanan['anggota_id'] ?></td>
+                                            <td><?= htmlspecialchars($pesanan['id']) ?></td>
+                                            <td><?= htmlspecialchars($pesanan['tanggal']) ?></td>
+                                            <td><?= number_format($pesanan['diskon'], 2) ?>%</td>
+                                            <td><?= $pesanan['status_bayar'] == 1 ? 'Sudah Bayar' : 'Belum Bayar' ?></td>
+                                            <td><?= htmlspecialchars($pesanan['nama_anggota']) ?></td>
                                             <td>
-                                                <a href="detail-pesanan.php?id=<?= $pesanan['id'] ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Detail</a>
-                                                <a href="edit-pesanan.php?id=<?= $pesanan['id'] ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                <a href="delete-pesanan.php?id=<?= $pesanan['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus pemesanan ini?');"><i class="fas fa-trash"></i> Hapus</a>
+                                                <a href="detail-pesanan.php?id=<?= $pesanan['id'] ?>" class="btn btn-primary btn-sm" title="Lihat Detail"><i class="fas fa-eye"></i> Detail</a>
+                                                <a href="edit-pesanan.php?id=<?= $pesanan['id'] ?>" class="btn btn-warning btn-sm" title="Edit Pesanan"><i class="fas fa-edit"></i> Edit</a>
+                                                <a href="delete-pesanan.php?id=<?= $pesanan['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus pesanan ini?');" title="Hapus Pesanan"><i class="fas fa-trash"></i> Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

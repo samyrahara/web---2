@@ -42,7 +42,7 @@ $pembayaran = pembayaran::get();
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
                         <a class="nav-link" href="list-anggota.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                            Anggota
+                            Manajemen Anggota
                         </a>
                         <a class="nav-link" href="list-pegawai.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
@@ -87,7 +87,7 @@ $pembayaran = pembayaran::get();
                         </div>
                         <div class="card-body">
                             <div class="mb-3 text-end">
-                                <a href="create-Produk.php" class="btn btn-success">
+                                <a href="create-pembayaran.php" class="btn btn-success">
                                     <i class="fas fa-plus"></i> Add Pembayaran
                                 </a>
                             </div>

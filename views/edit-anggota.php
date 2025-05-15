@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
                         <a class="nav-link" href="list-anggota.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                            Anggota
+                            Manajemen Anggota
                         </a>
                         <a class="nav-link" href="list-pegawai.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
@@ -112,14 +112,14 @@ if (isset($_POST['submit'])) {
                                 </div>
                         </div>
                         <div class="mb-3">
-                            <label for="status_aktif" class="form-label">Status Aktif</label>
-                            <input type="text" class="form-control" id="status_aktif" name="status_aktif" value="<?= $user['status_aktif'] ?>" required>
+                            <label for="jabatan" class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="<?= $user['deskripsi'] ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="Pegawai" class="form-label">Pegawai</label>
-                            <input type="text" class="form-control" id="Pegawai" name="Pegawai" value="<?= $user['Pegawai'] ?>" required>
+                            <label for="PersenDiskon" class="form-label">Persen Diskon</label>
+                            <input type="text" class="form-control" id="PersenDiskon" name="PersenDiskon" value="<?= $user['PersenDiskon'] ?>" required>
                         </div>
-                        <a href="list-pegawai.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+                        <a href="list-anggota.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                         <button type="submit" class="btn btn-warning" name="submit"><i class="fas fa-save"></i> Update</button>
                         </form>
                     </div>

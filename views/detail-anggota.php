@@ -1,15 +1,16 @@
 <?php
 require_once __DIR__ . '/../models/anggota.php';
+
 use models\Anggota;
 
-if(!isset($_GET['id'])) {
+if (!isset($_GET['id'])) {
     header("Location: list-anggota.php");
     exit;
 }
 
 $user = Anggota::find($_GET['id']);
 
-if(!$user) {
+if (!$user) {
     header("Location: list-anggota.php");
     exit;
 }
@@ -18,6 +19,7 @@ if(!$user) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,9 +29,10 @@ if(!$user) {
     <link href="../public/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="dashboard.php">project01</a>
+        <a class="navbar-brand ps-3" href="dashboard.php">Koperasi Pegawai</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
             <i class="fas fa-bars"></i>
         </button>
@@ -43,7 +46,7 @@ if(!$user) {
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
                         <a class="nav-link" href="list-anggota.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                            Anggota
+                            Manajemen Anggota
                         </a>
                         <a class="nav-link" href="list-pegawai.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
@@ -71,7 +74,7 @@ if(!$user) {
                     <div class="small">Logged in as:</div>
                     Marissa Azzahra
                 </div>
-            </nav> 
+            </nav>
         </div>
 
         <div id="layoutSidenav_content">
@@ -86,7 +89,7 @@ if(!$user) {
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-address-card me-1"></i>
-                             Detail Anggota
+                            Detail Anggota
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -95,18 +98,18 @@ if(!$user) {
                                     <td><?= $user['id'] ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Status aktif</th>
+                                    <th>Status Aktif</th>
                                     <td><?= $user['status_aktif'] ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Pegawai</th>
-                                    <td><?= $user['pegawai'] ?></td>
+                                    <th>Pegawai ID</th>
+                                    <td><?= $user['pegawai_id'] ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Kartu Diskon</th>
-                                    <td><?= $user['kartu_diskon'] ?></td>
+                                    <th>Kartu Diskon ID</th>
+                                    <td><?= $user['kartu_diskon_id'] ?></td>
                                 </tr>
-                                
+
                             </table>
 
                             <div class="m3">

@@ -16,4 +16,4 @@ if (!$user) {
 }
 
 KartuDiskon::delete($user['id']);
-header("Location: list-kartu_dikon.php");
+header("Location: list-kartu_diskon.php");

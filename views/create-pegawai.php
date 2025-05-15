@@ -1,12 +1,27 @@
 <?php
 require_once __DIR__ . '/../models/pegawai.php';
+
 use models\Pegawai;
+
+if (isset($_POST['submit'])) {
+    $data = [
+        'nip' => $_POST['nip'],
+        'nama' => $_POST['nama'],
+        'jenis_kelamin' => $_POST['jenis_kelamin'],
+        'jabatan' => $_POST['jabatan'],
+    ];
+
+    pegawai::create($data);
+    header("Location: list-pegawai.php");
+    exit;
+}
 
 $users = Pegawai::get();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,6 +31,7 @@ $users = Pegawai::get();
     <link href="../public/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand ps-3" href="dashboard.php">project01</a>
@@ -48,7 +64,7 @@ $users = Pegawai::get();
                         </a>
                         <a class="nav-link" href="list-pembayaran.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>
-                            Pembayaran 
+                            Pembayaran
                         </a>
                         <a class="nav-link" href="list-kartu_diskon.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>
@@ -103,8 +119,9 @@ $users = Pegawai::get();
                                     <label for="jabatan" class="form-label">Jabatan</label>
                                     <input type="text" class="form-control" id="jabatan" name="jabatan" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="list-pegawai.php" class="btn btn-secondary">Batal</a>
+                                <<a href="list-pegawai.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+                                    <button type="submit" class="btn btn-primary" name="submit"> Save<i class="fas fa-save"></i></button>
+                            </form>
                             </form>
                         </div>
                     </div>

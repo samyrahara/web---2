@@ -3,7 +3,7 @@ require_once __DIR__ . '/../models/pegawai.php';
 
 use models\Pegawai;
 
-$users = Pegawai::get();
+$pegawai = Pegawai::get();
 ?>
 
 <!DOCTYPE html>
@@ -24,42 +24,56 @@ $users = Pegawai::get();
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand ps-3" href="dashboard.php">Koperasi Pegawai</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
-            <i class="fas fa-bars"></i>
-        </button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
-
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
-
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAnggota" aria-expanded="false" aria-controls="collapseAnggota">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <a class="nav-link" href="list-anggota.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             Manajemen Anggota
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseAnggota" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="list-anggota.php">Data Anggota</a>
-                                <a class="nav-link" href="list-pegawai.php">Data Pegawai</a>
-                                <a class="nav-link" href="list-kartu_diskon.php">Kartu Diskon</a>
-                            </nav>
-                        </div>
-
+                        <a class="nav-link" href="list-pegawai.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
+                            Pegawai
+                        </a>
                         <a class="nav-link" href="list-produk.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-box"></i></div>
                             Produk
                         </a>
                         <a class="nav-link" href="list-pesanan.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                             Pesanan
                         </a>
                         <a class="nav-link" href="list-pembayaran.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>
                             Pembayaran
+                        </a>
+                        <a class="nav-link" href="list-kartu_diskon.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>
+                            Kartu Diskon
                         </a>
                     </div>
                 </div>
@@ -69,8 +83,6 @@ $users = Pegawai::get();
                 </div>
             </nav>
         </div>
-
-
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
@@ -98,16 +110,17 @@ $users = Pegawai::get();
                                         <th>Nama</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Jabatan</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($users as $index => $user) : ?>
+                                    <?php foreach ($pegawai as $index => $pegawai) : ?>
                                         <tr>
-                                            <td><?= $user['id'] ?></td>
-                                            <td><?= $user['nip'] ?></td>
-                                            <td><?= $user['nama'] ?></td>
-                                            <td><?= $user['jenis_kelamin'] ?></td>
-                                            <td><?= $user['jabatan'] ?></td>
+                                            <td><?= $pegawai['id'] ?></td>
+                                            <td><?= $pegawai['nip'] ?></td>
+                                            <td><?= $pegawai['nama'] ?></td>
+                                            <td><?= $pegawai['jenis_kelamin'] ?></td>
+                                            <td><?= $pegawai['jabatan'] ?></td>
                                             <td>
                                                 <a href="detail-pegawai.php?id=<?= $user['id'] ?>" class="btn btn-primary">
                                                     <i class="fas fa-eye"></i> Detail
@@ -116,7 +129,7 @@ $users = Pegawai::get();
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
                                                 <a href="delete-pegawai.php?id=<?= $user['id'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus pegawai ini?');">
-                                                    <i class="fas fa-trash"></i> Delete
+                                                    <i class="fas fa-trash"></i> Hapus
                                                 </a>
                                             </td>
                                         </tr>

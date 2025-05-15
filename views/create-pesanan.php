@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/anggota.php';
 use models\Pesanan;
 use models\Anggota;
 
-$pesananlist = Pesanan::get();
+$anggotaList = Anggota::get();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = [
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="UTF-8" />
-    <title>Create PesananPesanan - project01</title>
+    <title>Create Pesanan - project01</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../public/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -34,32 +34,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="dashboard.php">project01</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="dashboard.php">Koperasi Pegawai</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
-                        <a class="nav-link" href="list-anggota.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>Anggota
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAnggota" aria-expanded="false" aria-controls="collapseAnggota">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Manajemen Anggota
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link" href="list-pegawai.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>Pegawai
-                        </a>
+                        <div class="collapse" id="collapseAnggota" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="list-anggota.php">Data Anggota</a>
+                                <a class="nav-link" href="list-pegawai.php">Data Pegawai</a>
+                                <a class="nav-link" href="list-kartuDiskon.php">Kartu Diskon</a>
+                            </nav>
+                        </div>
+
                         <a class="nav-link" href="list-produk.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-box"></i></div>Produk
+                            <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                            Produk
                         </a>
                         <a class="nav-link" href="list-pesanan.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>Pesanan
+                            <div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
+                            Pesanan
                         </a>
-                        <a class="nav-link" href="list-pembayaran.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>Pembayaran
-                        </a>
-                        <a class="nav-link" href="list-kartu_diskon.php">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>Kartu Diskon
+                        <a class="nav-link" href="list-Pembayaran.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                            Pembayaran
                         </a>
                     </div>
                 </div>
@@ -100,12 +111,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="anggota_id" class="form-label">Anggota ID</label>
+                                    <label for="anggota_id" class="form-label">Anggota</label>
                                     <select class="form-control" id="anggota_id" name="anggota_id" required>
                                         <option value="">-- Pilih Anggota --</option>
                                         <?php foreach ($anggotaList as $anggota): ?>
                                             <option value="<?= $anggota['id'] ?>">
-                                                <?= $anggota['id'] ?> - <?= $anggota['nama'] ?? 'Tanpa Nama' ?>
+                                                <?= $anggota['id'] ?> - <?= $anggota['id'] ?? 'id' ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
