@@ -1,6 +1,6 @@
 <?php
 
 $host = 'localhost';
-$db = 'learn_pdo';
+$dbname = 'dbkoprasi';
 $user = 'root';
 $password = '';

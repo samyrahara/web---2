@@ -1,5 +1,5 @@
 <?php
-$pdo = require 'Connection.php';
-$statement = $pdo->query('select * from users');
+
+$pdo = require 'connection.php';
+$statement = $pdo->query('SELECT * FROM pegawai');
 print_r($statement->fetchAll());
-   
