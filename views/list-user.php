@@ -61,7 +61,7 @@ $users = User::getAll();
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                Anggia Dwi Hikmah
+                Marissa Azzahra
             </div>
         </nav>
     </div>
