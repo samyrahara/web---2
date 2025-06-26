@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-      Schema::create('mahasiswas', function (Blueprint $table) {
+        Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('nim')->unique();
@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('jurusan')->nullable();
             $table->string('foto')->nullable();
             $table->string('status')->default('aktif');
-            $table->string('angkatan')->nullable();
-            $table->string('jenis_kelamin')->nullable();
-            $table->string('agama')->nullable();
+            $table->string('angkatan')->nullable(); 
+            $table->string('jenis_kelamin')->nullable(); 
+            $table->string('agama')->nullable(); //
             $table->timestamps();
         });
     }
